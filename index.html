@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Classic Chat</title><link rel="stylesheet" href="style.css"></head><body>
+<div id="app">
+ <aside class="sidebar">
+  <div class="brand">Classic Chat</div>
+  <div class="rooms">
+    <h3>Rooms</h3>
+    <ul id="roomList"></ul>
+    <div class="createRoom">
+      <input id="newRoomName" placeholder="New room name"/>
+      <button id="createRoomBtn">Create</button>
+    </div>
+  </div>
+  <div class="profile">
+    <img id="avatarPreview" class="avatar" src="" onerror="this.src='https://ui-avatars.com/api/?name=U'"/>
+    <div id="meName">Not logged</div>
+    <small id="meBio"></small>
+    <button id="editProfileBtn">Profile</button>
+  </div>
+ </aside>
+ <main class="chat">
+  <header class="chatHeader"><div><span id="roomName">Global</span></div><div class="presence">👥 <span id="memberCount">0</span></div></header>
+  <section id="messages" class="messages"></section>
+  <footer class="composer"><input id="msgInput" placeholder="Type message..." disabled/><button id="sendBtn" disabled>Send</button></footer>
+ </main>
+ <aside class="rightbar"><h3>Friends</h3><div class="friendAdd"><input id="friendName" placeholder="Add by username"/><button id="addFriendBtn">Add</button></div><ul id="friendList"></ul></aside>
+</div>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal"><div class="modalCard">
+  <h2>Login - Email OTP</h2>
+  <input id="loginEmail" type="email" placeholder="you@example.com"/>
+  <button id="sendOtpBtn">Send OTP</button>
+  <div id="otpArea" style="display:none"><input id="otpCode" maxlength="6" placeholder="Enter code"/><button id="verifyOtpBtn">Verify</button></div>
+  <small id="loginHint"></small>
+</div></div>
+
+<!-- Profile Modal -->
+<div id="profileModal" class="modal" style="display:none"><div class="modalCard">
+  <h2>Set your profile</h2>
+  <input id="username" maxlength="20" placeholder="Username (3-20)"/>
+  <select id="gender"><option value="">Prefer not to say</option><option>Male</option><option>Female</option><option>Other</option></select>
+  <input id="avatar" placeholder="Avatar URL (optional)"/><textarea id="bio" maxlength="140" placeholder="Bio"></textarea>
+  <button id="saveProfileBtn">Save</button></div></div>
+
+<script src="/socket.io/socket.io.js"></script><script src="client.js"></script></body></html>
